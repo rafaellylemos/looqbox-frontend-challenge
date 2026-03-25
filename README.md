@@ -1,66 +1,35 @@
-# React + TypeScript + Vite
+Looqbox Frontend Challenge - Pokedex SPA
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Projeto desenvolvido para o Desafio Técnico para a vaga de Frontend Developer da Looqbox.
+Pokédex virtual: Pesquisa de Pokémons com base nos dados retornados da PokeAPI. Interface dinâmica e responsiva.
 
-Currently, two official plugins are available:
+Stack e ferramentas:
+* React + Typescript
+* React Router
+* Redux Toolkit
+* Ant Design
+* Tailwind CSS
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
 
-## React Compiler
+Implementação:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Para gerenciamento de estado, utilizei o Redux, guardando o estado inicial de tela (os 20 pokemons da home) e, dessa forma, evitando requisições desnecessárias à API (economia de dados). Isso foi útil em pesquisas e retornos para a home.
 
-## Expanding the ESLint configuration
+- Conforme solicitado no desafio, a barra de pesquisas que implementei retorna o resultado após o Enter do usuário. Isso está explicado no seu placeholder. Também implementei um estado de "Keep typing" para orientar o usuário enquanto digita, melhorando a interatividade com a plataforma.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+-Implementei uma tratativa de erro global para as buscas: Se a busca falha ou o pokemon digitado nao existe, um modal AntD é exibido, permitindo que o usuário pesquise novamente (retorno para a home instantâneo, sem recarregar a aplicação).
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      tseslint.configs.recommendedTypeChecked,
-      tseslint.configs.strictTypeChecked,
-      tseslint.configs.stylisticTypeChecked,
+- Rotas do projeto:
+* /:Home (com grid e paginação)
+* /pokemon/:name (detalhes)
 
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-    },
-  },
-])
-```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Para rodar, você deve:
+1- instalar as dependências (npm install / yarn install)
+2- rodar o projeto em modo dev (npm run dev / yarn dev)
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Extras:
+- Plataforma responsiva
+- Tipagem de interfaces
+- Paginação integrada
